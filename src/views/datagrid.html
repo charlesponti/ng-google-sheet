@@ -1,6 +1,13 @@
 <div >
-    <table class="table" ng-show='stocks.length'>
-        <tr>
+
+    <div ng-grid="gridOptions"></div>
+
+    <h2 class="text-center">{{title}}</h2>
+
+    <h4 class="text-center">{{key}}</h4>
+
+    <table class="table" ng-show='rows.length'>
+        <tr class="table-head">
             <th>
                 Ticker
             </th>
@@ -17,23 +24,23 @@
                 Volume
             </th>
         </tr>
-        <tr ng-repeat='stock in stocks'>
+        <tr class="table-row" ng-repeat='row in rows'>
             <td>
-                {{ stock.ticker }}
+                {{ row.ticker }}
             </td>
             <td>
-                {{ stock.industry }}
+                {{ row.industry }}
             </td>
             <td>
-                {{ stock.marketCap }}
+                {{ row.marketcap }}
             </td>
             <td>
-                {{ stock.price }}
+                {{ row.price }}
             </td>
             <td>
-                {{ stock.volume }}
+                {{ row.volume }}
             </td>
         </tr>
     </table>
-    <h3 class="text-center" ng-show='!stocks.length'> No stocks. </h3>
+    <h3 class="text-center" ng-show='!rows.length'> No stocks. </h3>
 </div>
