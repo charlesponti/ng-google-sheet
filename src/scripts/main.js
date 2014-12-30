@@ -9,6 +9,9 @@ require('angular');
 require('angular-route');
 require('angular-resource');
 require('../../node_modules/ng-grid/build/ng-grid');
+
+// Request Application dependencies
+require('./services');
 require('./controllers');
 
 // Require routes
@@ -19,6 +22,7 @@ angular.module('trDatagrid', [
     'ngRoute',
     'ngResource',
     'ngGrid',
+    'trDatagrid.services',
     'trDatagrid.controllers'
   ])
   .config(routes);
