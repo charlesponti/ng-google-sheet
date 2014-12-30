@@ -4,7 +4,7 @@ describe('Controllers: HomeCtrl', function() {
   var $scope;
 
   beforeEach(function() {
-    angular.mock.module('myApp');
+    angular.mock.module('trDatagrid');
 
     angular.mock.inject(function($rootScope, $controller) {
       $scope = $rootScope.$new();
