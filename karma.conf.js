@@ -13,14 +13,20 @@ module.exports = function(config) {
     ],
 
     files: [
-      'src/scripts/main.js',
+      // libraries
+      'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'test/**/*spec.js'
+      // App file
+      'src/scripts/main.js',
+      // Tests
+      'test/unit/**/*spec.js'
     ],
 
     preprocessors: {
-      'test/**/*spec.js': ['browserify'],
-      'src/scripts/**/*.js': ['browserify']
+      // Use Browserify for Test files
+      'test/unit/**/*spec.js': 'browserify',
+      // Use Browserify for app files
+      'src/scripts/**/*.js': 'browserify'
     },
 
     browserify: {
