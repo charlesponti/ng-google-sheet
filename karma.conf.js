@@ -13,11 +13,10 @@ module.exports = function(config) {
     ],
 
     files: [
-      // libraries
-      'node_modules/angular/angular.js',
-      'node_modules/angular-mocks/angular-mocks.js',
       // App file
       'src/scripts/main.js',
+      // libraries
+      'node_modules/angular-mocks/angular-mocks.js',
       // Tests
       'test/unit/**/*spec.js'
     ],
