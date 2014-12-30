@@ -1,0 +1,2 @@
+angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("about.html","<div class=\"text-center\">\n    <h1>{{title}}</h1>\n\n    <p >\n        {{body}}\n    </p>\n</div>\n");
+$templateCache.put("home.html","<h1 class=\"text-center\">{{ title }}</h1>\n");}]);
