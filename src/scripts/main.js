@@ -11,7 +11,9 @@ require('angular-resource');
 require('../../node_modules/ng-grid/build/ng-grid');
 
 // Request Application dependencies
+require('./templates');
 require('./services');
+require('./directives');
 require('./controllers');
 
 // Require routes
@@ -22,7 +24,9 @@ angular.module('trDatagrid', [
     'ngRoute',
     'ngResource',
     'ngGrid',
+    'templates',
     'trDatagrid.services',
+    'trDatagrid.directives',
     'trDatagrid.controllers'
   ])
   .config(routes);

@@ -1,0 +1,39 @@
+<div >
+    <table class="table" ng-show='stocks.length'>
+        <tr>
+            <th>
+                Ticker
+            </th>
+            <th>
+                Industry
+            </th>
+            <th>
+                Market Cap
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Volume
+            </th>
+        </tr>
+        <tr ng-repeat='stock in stocks'>
+            <td>
+                {{ stock.ticker }}
+            </td>
+            <td>
+                {{ stock.industry }}
+            </td>
+            <td>
+                {{ stock.marketCap }}
+            </td>
+            <td>
+                {{ stock.price }}
+            </td>
+            <td>
+                {{ stock.volume }}
+            </td>
+        </tr>
+    </table>
+    <h3 class="text-center" ng-show='!stocks.length'> No stocks. </h3>
+</div>

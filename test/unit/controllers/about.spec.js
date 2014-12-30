@@ -5,7 +5,7 @@ describe('Controllers: AboutCtrl', function() {
 
   beforeEach(function() {
     // Inject module
-    angular.mock.module('myApp');
+    angular.mock.module('trDatagrid');
 
     // Mock controller
     angular.mock.inject(function($rootScope, $controller) {
