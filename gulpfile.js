@@ -24,9 +24,10 @@ var source = require('vinyl-source-stream');
 var protractor      = require('gulp-protractor').protractor;
 var webdriver       = require('gulp-protractor').webdriver;
 var webdriverUpdate = require('gulp-protractor').webdriver_update;
-
 gulp.task('webdriver-update', webdriverUpdate);
 gulp.task('webdriver', webdriver);
+
+var templateCache  = require('gulp-angular-templatecache');
 
 // Dev Server
 var port = 4000;
@@ -63,8 +64,7 @@ gulp.task('build-scripts', ['jshint'], function() {
       insertGlobals: true,
       debug: true,
       cache: {},
-      packageCache: {},
-      extensions: ['.js']
+      packageCache: {}
     })
     .bundle()
     .pipe(source('bundle.js'))
@@ -104,6 +104,12 @@ gulp.task('build-styles-prod', function() {
 });
 
 gulp.task('build-html', function() {
+  gulp.src('./src/views/**/*.html')
+    .pipe(templateCache({
+      standalone: true
+    }))
+    .pipe(gulp.dest('./src/scripts'));
+
   return gulp.src(files.html.source)
     .pipe(minifyHTML({
       comments: true,
