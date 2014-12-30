@@ -1,0 +1,14 @@
+header {
+    .page-title {
+        .page-title__highlight {
+            color: orange;
+        }
+    }
+
+    .navbar-nav li {
+        border-left: 1px solid #ccc;
+        &:last-child {
+            border-right: 1px solid #ccc;
+        }
+    }
+}

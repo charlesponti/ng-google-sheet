@@ -1,0 +1,31 @@
+{
+  "name": "Facade",
+  "version": "0.0.1",
+  "homepage": "https://github.com/theponti/facade",
+  "authors": [
+    "CJ Ponti <cjponti@gmail.com>"
+  ],
+  "description": "A boilerplate for a static site",
+  "main": "gulpfile.js",
+  "keywords": [
+    "static",
+    "node",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "public/libs"
+  ],
+  "dependencies": {
+    "modernizr": "~2.7.2",
+    "prefix-free": "gh-pages",
+    "bootstrap": "~3.3.1"
+  }
+}
