@@ -6,7 +6,7 @@
   "scripts": {
     "karma": "./node_modules/karma/bin/karma",
     "gulp": "./node_modules/gulp/bin/gulp.js",
-    "start": "npm run gulp",
+    "start": "node index.js",
     "build": "npm run gulp build",
     "build-prod": "npm run gulp prod-build",
     "test": "npm run karma start karma.conf.js",
