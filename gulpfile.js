@@ -101,7 +101,7 @@ gulp.task('build-styles', function() {
 gulp.task('build-styles-prod', function() {
   return gulp.src(files.styles.main)
     .pipe(sass())
-    .pipe(rename({suffix: '.min'}))
+    // .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
     .pipe(gulp.dest(files.styles.build));
 });
