@@ -10,7 +10,7 @@ describe('Services: GoogleSheets', function() {
         entry: [
           {
             title: { $t: 'fooTicker' },
-            content: { $t: 'foo: bar, bar: baz, baz: qux' }
+            content: { $t: 'foo: bar, bar: baz, baz: qux, cats: 1,000.00, usd: $100, per: 4.04%' }
           }
         ]
       }
@@ -32,7 +32,15 @@ describe('Services: GoogleSheets', function() {
       expect(service.formatData(response)).toEqual({
         title: 'fooTitle',
         rows: [
-          { ticker: 'fooTicker', foo: 'bar', bar: 'baz', baz: 'qux'}
+          {
+            ticker: 'fooTicker',
+            foo: 'bar',
+            bar: 'baz',
+            baz: 'qux',
+            cats: 1000,
+            usd: 100,
+            per: 4.04
+          }
         ]
       });
     });
@@ -44,7 +52,10 @@ describe('Services: GoogleSheets', function() {
         ticker: 'fooTicker',
         foo: 'bar',
         bar: 'baz',
-        baz: 'qux'
+        baz: 'qux',
+        cats: 1000,
+        usd: 100,
+        per: 4.04
       });
     });
   });
