@@ -1,0 +1,133 @@
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before,
+.cf:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */ }
+
+.cf:after {
+  clear: both; }
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+  *zoom: 1; }
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+header {
+  height: 200px; }
+  header .page-title {
+    display: inline-block; }
+    header .page-title .page-title__highlight {
+      color: orange; }
+  header .header-help {
+    padding-top: 20px; }
+  header .header-help .links {
+    color: grey; }
+  header .header-help .links a {
+    color: grey;
+    margin: 0px 10px; }
+  header .header-help input {
+    display: inline-block;
+    width: 200px; }
+  header .navbar-nav li {
+    border-left: 1px solid #ccc; }
+    header .navbar-nav li:last-child {
+      border-right: 1px solid #ccc; }
+
+.datagrid {
+  background: white;
+  height: 500px; }
+
+.datagrid-container {
+  height: 500px; }
+  .datagrid-container .table-striped > tbody > tr:first-child {
+    background-color: aliceblue; }
+  .datagrid-container th, .datagrid-container td {
+    position: relative;
+    color: grey; }
+    .datagrid-container th.red, .datagrid-container td.red {
+      color: red; }
+    .datagrid-container th.green, .datagrid-container td.green {
+      color: green; }
+  .datagrid-container .arrow {
+    font-size: 1.4em;
+    position: absolute;
+    top: 0;
+    right: 0; }
+
+.highlight {
+  color: orange; }
+
+.red {
+  color: red; }
+
+.green {
+  color: green; }
+
+.hover,
+.ngHeaderContainer {
+  background-color: aliceblue; }
+
+.ngCell,
+.ngHeaderCell {
+  border: 0px; }
+
+.ngSortButtonUp,
+.ngSortButtonDown {
+  top: 13px;
+  left: inherit; }
+
+.ngRow:hover {
+  background-color: aliceblue; }
+
+.table-head {
+  background-color: aliceblue; }
+  .table-head th:hover {
+    cursor: pointer; }
+
+.table-row:hover {
+  background-color: aliceblue; }
+
+/* Desktops and laptops */
+@media only screen and (min-width: 1224px) {
+  /* Styles */ }
+/* Large Screens */
+@media only screen and (min-width: 1824px) {
+  /* Styles */ }
+/* iPads (portrait and landscape) */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Styles */ }
+/* iPads (portrait) */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* Styles */ }
+/* iPads (landscape) */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  /* Styles */ }
+/* Smartphones (portrait and landscape) */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* Styles */ }
+/* Smartphones (portrait)  */
+@media only screen and (max-width: 320px) {
+  /* Styles */ }
+/* Smartphones (landscape) */
+@media only screen and (min-width: 321px) {
+  /* Styles */ }
+
+/*# sourceMappingURL=main.css.map */
