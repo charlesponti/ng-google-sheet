@@ -1,5 +1,60 @@
+.datagrid {
+    background: white;
+    height: 500px;
+}
+
+.datagrid-container {
+    height: 500px;
+    th {
+        position: relative;
+    }
+    .arrow {
+        font-size: 1.4em;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+
+.highlight {
+    color: orange;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.hover,
+.ngHeaderContainer {
+    background-color: aliceblue;
+}
+
+// Kill border
+.ngCell,
+.ngHeaderCell {
+    border: 0px;
+}
+
+.ngSortButtonUp,
+.ngSortButtonDown {
+    top: 13px;
+    left: inherit;
+}
+
+.ngRow:hover {
+    background-color: aliceblue;
+}
+
 .table-head {
     background-color: aliceblue;
+    th:hover {
+        cursor: pointer;
+    }
 }
 
 .table-row:hover {
