@@ -1,10 +1,26 @@
 'use strict';
 
-module.exports = function($q, $http) {
+var fx = require('money');
+
+module.exports = function($q, $http, Constants) {
 
   var base = 'https://spreadsheets.google.com/feeds/list/:key/ow1vgqx/public/basic?alt=json';
   var key = '1jEAO4g_C0NfGkMrLiqIIcXxbOmbfY5mvZ7GzevSi_5c';
 
+
+  var baseRegex = [
+    '(',
+    Constants.CURRENCY_SYMBOLS
+      .map(function (a) {
+        // Escape all the currency symbols ($ at least will jack up this regex)
+        return '\\' + a;
+      })
+      .join('|'),
+    ')?'
+    ].join('');
+
+  // /^[-+]?[£$¤¥]?[\d,.]+%?$/
+  var numberRegex = new RegExp('^[-+]?'+baseRegex+'[\\d,.]+'+baseRegex+'%?$');
 
   var service = {};
 
@@ -12,6 +28,11 @@ module.exports = function($q, $http) {
     return function(keyData) {
       var key = keyData.match(/\w*\W\s/)[0];
       var value = keyData.replace(key, '');
+
+      if (numberRegex.test(value)) {
+        value = fx(value)._v;
+      }
+
       row[key.replace(': ', '')] = value;
     };
   };
