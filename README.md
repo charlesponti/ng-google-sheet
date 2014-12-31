@@ -1,3 +1,5 @@
+[ ![Codeship Status for theponti/angular-datagrid](https://codeship.com/projects/cce16f70-72fa-0132-d565-5ad4053fa8e4/status?branch=master)](https://codeship.com/projects/54872)
+
 # Facade-Angular
 
 A client-side AngularJS boilerplate solution
@@ -10,7 +12,7 @@ A client-side AngularJS boilerplate solution
 ## Features
 
 ### Build
-* Gulp  
+* Gulp
   This boilerplate uses the version of `Gulp` in the `node_modules` directory so you will not need to have it installed globally.
 * Browserify
 
@@ -26,7 +28,7 @@ A client-side AngularJS boilerplate solution
   * Angular-Route
 
 ### Testing
-* Karma  
+* Karma
   This boilerplate uses the version of `Karma` in the `node_modules` directory so you will not need to have it installed globally.
 * Jasmine
 
