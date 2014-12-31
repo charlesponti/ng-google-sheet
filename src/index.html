@@ -41,66 +41,65 @@
 	<!--[if lte IE 8]>
 		<script>(function(){var e="abbr,article,aside,audio,canvas,datalist,details,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(','),i=e.length;while(i--){document.createElement(e[i]);}}());</script>
 	<![endif]-->
-	<div id="container-fluid">
+	<div id="container">
 
-		<header>
-			<div class='header'>
-				<h1 class="page-title">
-					DATA<span class="page-title__highlight">GRID</span>
-				</h1>
-				<div class="header-help pull-right">
-					<a href="/faq">FAQ</a> |
-					<a href="/help">Help</a>
-					<input class="form-control" placeholder="Search"/>
+		<div class='header'>
+			<h1 class="page-title">
+				DATA<span class="page-title__highlight">GRID</span>
+			</h1>
+			<div class="header-help pull-right">
+				<a href="/faq">FAQ</a> |
+				<a href="/help">Help</a>
+				<input class="form-control" placeholder="Search"/>
+			</div>
+		</div>
+
+		<div class="nav navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<div class="nav-header">
+					<button class="navbar-toggle collapsed pull-right" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only"> Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="/">
+								<i class="glyphicon glyphicon-home"></i>
+							</a>
+						</li>
+						<li>
+							<a href='/'> Preview </a>
+						</li>
+						<li>
+							<a href='/'> Activity </a>
+						</li>
+						<li>
+							<a href='/'> Control </a>
+						</li>
+						<li>
+							<a href='/'> Issue </a>
+						</li>
+						<li>
+							<a href='/'> Overview </a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav pull-right">
+						<li>
+							<a href='/'> My Profile </a>
+						</li>
+						<li>
+							<a href='/'> Admin </a>
+						</li>
+					</ul>
 				</div>
 			</div>
-			<div class="nav navbar navbar-default" role="navigation">
-				<div class="container-fluid">
-					<div class="nav-header">
-						<button class="navbar-toggle collapsed pull-right" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only"> Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-					</div>
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li>
-								<a href="/">
-									<i class="glyphicon glyphicon-home"></i>
-								</a>
-							</li>
-							<li>
-								<a href='/'> Preview </a>
-							</li>
-							<li>
-								<a href='/'> Activity </a>
-							</li>
-							<li>
-								<a href='/'> Control </a>
-							</li>
-							<li>
-								<a href='/'> Issue </a>
-							</li>
-							<li>
-								<a href='/'> Overview </a>
-							</li>
-						</ul>
-						<ul class="nav navbar-nav pull-right">
-							<li>
-								<a href='/'> My Profile </a>
-							</li>
-							<li>
-								<a href='/'> Admin </a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</header>
+		</div>
 
-		<div id="container" ng-view></div>
+		<div ng-view></div>
 
 	</div>
 

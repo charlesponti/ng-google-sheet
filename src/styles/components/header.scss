@@ -1,14 +1,5 @@
-header {
-    .header {
-        height: 80px;
-    }
-
-    .page-title {
-        display: inline-block;
-        .page-title__highlight {
-            color: orange;
-        }
-    }
+.header {
+    height: 80px;
 
     .header-help {
         padding-top: 20px;
@@ -28,10 +19,18 @@ header {
         width: 200px;
     }
 
-    .navbar-nav li {
-        border-left: 1px solid #ccc;
-        &:last-child {
-            border-right: 1px solid #ccc;
+    .page-title {
+        display: inline-block;
+        .page-title__highlight {
+            color: orange;
         }
+    }
+
+}
+
+.navbar-nav li {
+    border-left: 1px solid #ccc;
+    &:last-child {
+        border-right: 1px solid #ccc;
     }
 }

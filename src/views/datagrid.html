@@ -1,10 +1,10 @@
 <div>
 
     <!--  angular-ui/ng-grid -->
-    <div class="datagrid col-xs-12" ng-grid="gridOptions" ng-show="grid == 'ngGrid'"></div>
+    <div class="datagrid-ng" ng-grid="gridOptions" ng-show="grid == 'ngGrid'"></div>
 
     <!--  custom grid -->
-    <div class="datagrid-container" ng-show="grid == 'customGrid'">
+    <div class="custom-grid" ng-show="grid == 'customGrid'">
         <table class="table table-striped" ng-show='rows.length'>
             <tr class="table-head">
                 <th ng-click="onHeaderClick('ticker', $event)">
