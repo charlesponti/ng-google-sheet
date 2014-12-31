@@ -1,5 +1,8 @@
 'use strict';
 
+/**
+ * @ngInject
+ */
 module.exports = function($scope) {
 
   $scope.title = "All About Facade-Angular";

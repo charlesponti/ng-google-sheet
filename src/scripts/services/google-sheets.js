@@ -2,6 +2,9 @@
 
 var fx = require('money');
 
+/**
+ * @ngInject
+ */
 module.exports = function($q, $http, Constants) {
 
   var base = 'https://spreadsheets.google.com/feeds/list/:key/ow1vgqx/public/basic?alt=json';

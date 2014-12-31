@@ -19,6 +19,7 @@ var minifycss = require('gulp-minify-css');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var ngAnnotate = require('browserify-ngannotate');
 
 // Protractor
 var protractor      = require('gulp-protractor').protractor;
@@ -64,7 +65,8 @@ gulp.task('build-scripts', ['jshint'], function() {
       insertGlobals: true,
       debug: true,
       cache: {},
-      packageCache: {}
+      packageCache: {},
+      transform: ngAnnotate
     })
     .bundle()
     .pipe(source('bundle.js'))
@@ -78,7 +80,8 @@ gulp.task('build-scripts-prod', function() {
       insertGlobals: true,
       debug: false,
       cache: {},
-      packageCache: {}
+      packageCache: {},
+      transform: ngAnnotate
     })
     .bundle()
     .pipe(source('bundle.js'))
