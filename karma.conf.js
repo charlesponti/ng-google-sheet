@@ -4,7 +4,8 @@ module.exports = function(config) {
   config.set({
 
     browsers: [
-      'Chrome'
+      'Chrome',
+      'Firefox'
     ],
 
     frameworks: [
@@ -36,7 +37,8 @@ module.exports = function(config) {
     plugins: [
       'karma-jasmine',
       'karma-browserify',
-      'karma-chrome-launcher'
+      'karma-chrome-launcher',
+      'karma-firefox-launcher'
     ]
 
   });
