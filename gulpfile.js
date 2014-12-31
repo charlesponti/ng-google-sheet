@@ -84,7 +84,7 @@ gulp.task('build-scripts-prod', ['jshint'], function() {
     .pipe(source('bundle.js'))
     .pipe(buffer())
     .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
+    // .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest(files.scripts.build));
 });
 
