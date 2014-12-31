@@ -159,7 +159,11 @@ gulp.task('server', function() {
 
 gulp.task('build', ['build-styles', 'build-scripts', 'build-html']);
 
-gulp.task('prod-build', ['build-scripts-prod','build-styles-prod']);
+gulp.task('prod-build', [
+  'build-html',
+  'build-styles-prod',
+  'build-scripts-prod'
+]);
 
 gulp.task('default', [ 'build', 'server' ], function() {
 

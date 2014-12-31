@@ -11,7 +11,7 @@
     "build-prod": "npm run gulp prod-build",
     "test": "npm run karma start karma.conf.js",
     "protractor": "npm run gulp protractor",
-    "postinstall": "npm run gulp build-scripts-prod"
+    "postinstall": "npm run build-prod"
   },
   "repository": {
     "type": "git",

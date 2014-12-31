@@ -11,11 +11,11 @@ module.exports = function($locationProvider, $routeProvider) {
   // Set routes
   return $routeProvider
     .when('/about', {
-      templateUrl: 'views/about.html',
+      templateUrl: 'about.html',
       controller: 'AboutCtrl'
     })
     .when('/', {
-      templateUrl: 'views/home.html',
+      templateUrl: 'home.html',
       controller: 'HomeCtrl'
     })
     .otherwise({
