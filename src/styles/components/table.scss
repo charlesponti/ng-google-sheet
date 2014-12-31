@@ -11,6 +11,9 @@
     th, td {
         position: relative;
         color: grey;
+        &.highlight {
+            color: orange;
+        }
         &.red {
             color: red;
         }
@@ -25,19 +28,6 @@
         top: 0;
         right: 0;
     }
-}
-
-
-.highlight {
-    color: orange;
-}
-
-.red {
-    color: red;
-}
-
-.green {
-    color: green;
 }
 
 .hover,

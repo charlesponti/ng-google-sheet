@@ -62,6 +62,8 @@ header {
   .datagrid-container th, .datagrid-container td {
     position: relative;
     color: grey; }
+    .datagrid-container th.highlight, .datagrid-container td.highlight {
+      color: orange; }
     .datagrid-container th.red, .datagrid-container td.red {
       color: red; }
     .datagrid-container th.green, .datagrid-container td.green {
@@ -71,15 +73,6 @@ header {
     position: absolute;
     top: 0;
     right: 0; }
-
-.highlight {
-  color: orange; }
-
-.red {
-  color: red; }
-
-.green {
-  color: green; }
 
 .hover,
 .ngHeaderContainer {
