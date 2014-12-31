@@ -30,26 +30,26 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-header {
-  height: 200px; }
-  header .page-title {
-    display: inline-block; }
-    header .page-title .page-title__highlight {
-      color: orange; }
-  header .header-help {
-    padding-top: 20px; }
-  header .header-help .links {
-    color: grey; }
-  header .header-help .links a {
-    color: grey;
-    margin: 0px 10px; }
-  header .header-help input {
-    display: inline-block;
-    width: 200px; }
-  header .navbar-nav li {
-    border-left: 1px solid #ccc; }
-    header .navbar-nav li:last-child {
-      border-right: 1px solid #ccc; }
+header .header {
+  height: 80px; }
+header .page-title {
+  display: inline-block; }
+  header .page-title .page-title__highlight {
+    color: orange; }
+header .header-help {
+  padding-top: 20px; }
+header .header-help .links {
+  color: grey; }
+header .header-help .links a {
+  color: grey;
+  margin: 0px 10px; }
+header .header-help input {
+  display: inline-block;
+  width: 200px; }
+header .navbar-nav li {
+  border-left: 1px solid #ccc; }
+  header .navbar-nav li:last-child {
+    border-right: 1px solid #ccc; }
 
 .datagrid {
   background: white;

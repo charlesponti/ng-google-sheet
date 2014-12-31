@@ -1,5 +1,7 @@
 header {
-    height: 200px;
+    .header {
+        height: 80px;
+    }
 
     .page-title {
         display: inline-block;
@@ -15,7 +17,7 @@ header {
     .header-help .links {
         color: grey;
     }
-    
+
     .header-help .links a {
         color: grey;
         margin: 0px 10px;
