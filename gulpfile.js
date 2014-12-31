@@ -72,7 +72,7 @@ gulp.task('build-scripts', ['jshint'], function() {
     .pipe(reload({ stream: true }));
 });
 
-gulp.task('build-scripts-prod', ['jshint'], function() {
+gulp.task('build-scripts-prod', function() {
   return browserify({
       entries: [files.scripts.main],
       insertGlobals: true,
