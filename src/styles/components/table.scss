@@ -5,8 +5,19 @@
 
 .datagrid-container {
     height: 500px;
-    th {
+    .table-striped>tbody>tr:first-child {
+        background-color: aliceblue;
+    }
+    th, td {
         position: relative;
+        color: grey;
+        &.red {
+            color: red;
+        }
+
+        &.green {
+            color: green;
+        }
     }
     .arrow {
         font-size: 1.4em;

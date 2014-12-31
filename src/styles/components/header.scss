@@ -1,8 +1,29 @@
 header {
+    height: 200px;
+
     .page-title {
+        display: inline-block;
         .page-title__highlight {
             color: orange;
         }
+    }
+
+    .header-help {
+        padding-top: 20px;
+    }
+
+    .header-help .links {
+        color: grey;
+    }
+    
+    .header-help .links a {
+        color: grey;
+        margin: 0px 10px;
+    }
+
+    .header-help input {
+        display: inline-block;
+        width: 200px;
     }
 
     .navbar-nav li {
