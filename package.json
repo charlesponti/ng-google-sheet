@@ -68,7 +68,8 @@
     "jquery": "^2.1.1",
     "lodash": "^2.4.1",
     "money": "^0.2.0",
-    "ng-grid": "^2.0.1"
+    "ng-grid": "^2.0.1",
+    "serve-static": "^1.7.1"
   },
   "browser": {
     "angular": "./node_modules/angular/angular.js"

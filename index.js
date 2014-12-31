@@ -2,9 +2,10 @@
 
 var express = require('express');
 var compression = require('compression');
+var serveStatic = require('serve-static');
 var server = express();
 
-server.use(express.static(__dirname + '/build'));
+server.use(serveStatic('build', {'index': ['index.html', 'index.htm']}));
 
 server.use(compression());
 
