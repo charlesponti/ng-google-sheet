@@ -22,15 +22,15 @@ module.exports = function() {
         type: 'number'
       },
       {
+        field: 'price',
+        header: 'Price',
+        type: 'money'
+      },
+      {
         field: 'change',
         header: 'Change',
         type: 'percentage',
         class: "{red: (row.change < 0), green: (row.change > 0)}"
-      },
-      {
-        field: 'price',
-        header: 'Price',
-        type: 'money'
       },
       {
         field: 'volume',
