@@ -1,4 +1,8 @@
 .sass-cache
 .DS_Store
+build/**/*.js
+build/**/*.css
+build/**/*.html
 node_modules
 *.log
+src/scripts/templates.js
