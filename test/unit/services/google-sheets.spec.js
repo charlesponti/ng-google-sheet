@@ -15,7 +15,7 @@ describe('Services: GoogleSheets', function() {
         ]
       }
     };
-    angular.mock.module('trDatagrid');
+    angular.mock.module('ngGoogleSheet');
     angular.mock.inject(function(GoogleSheets) {
       service = GoogleSheets;
       done();
