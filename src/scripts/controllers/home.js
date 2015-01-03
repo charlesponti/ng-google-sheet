@@ -24,7 +24,8 @@ module.exports = function() {
       {
         field: 'change',
         header: 'Change',
-        type: 'percentage'
+        type: 'percentage',
+        class: "{red: (row.change < 0), green: (row.change > 0)}"
       },
       {
         field: 'price',
