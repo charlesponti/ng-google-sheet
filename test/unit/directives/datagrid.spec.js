@@ -87,17 +87,40 @@ describe('Module: datagrid', function() {
         rows: [
           { ticker: 'C', industry: 'Banking' },
           { ticker: 'JPM', industry: 'Banking' }
-          ]
-        };
-        it('should set $ctrl.title', function() {
-          ctrl.onGetSuccess(data);
-          expect(ctrl.title).toEqual(data.title);
-        });
-        it('should set $ctrl.rows', function() {
-          ctrl.onGetSuccess(data);
-          expect(ctrl.rows).toEqual(data.rows);
-        });
+        ]
+      };
+      it('should set $ctrl.title', function() {
+        ctrl.onGetSuccess(data);
+        expect(ctrl.title).toEqual(data.title);
       });
+      it('should set $ctrl.rows', function() {
+        ctrl.onGetSuccess(data);
+        expect(ctrl.rows).toEqual(data.rows);
+      });
+    });
+
+    describe('.formatColumnValue()', function() {
+      it('should return empty string for undefined', function() {
+        var val = ctrl.formatColumnValue('foo', { type: 'number' }, { foo: undefined });
+        expect(val).toEqual('');
+      });
+      it('should return empty string for null', function() {
+        var val = ctrl.formatColumnValue('foo', { type: 'number' }, { foo: null });
+        expect(val).toEqual('');
+      });
+      it('should format percentage', function() {
+        var val = ctrl.formatColumnValue('foo', { type: 'percentage' }, { foo: 10.2 });
+        expect(val).toEqual('10.2 %');
+      });
+      it('should format money', function() {
+        var val = ctrl.formatColumnValue('foo', { type: 'money' }, { foo: 10.24 });
+        expect(val).toEqual('£ 10.24');
+      });
+      it('should format number', function() {
+        var val = ctrl.formatColumnValue('foo', { type: 'number' }, { foo: 1024 });
+        expect(val).toEqual('1,024');
+      });
+    });
 
     describe('.sortAsc()', function() {
       it('should sort the rows in ascending order', function() {
