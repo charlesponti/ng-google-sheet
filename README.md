@@ -15,7 +15,7 @@ A Google Sheets API datagrid build with AngularJS
   ```
 2. Set up config in parent container
 ```js
-function ParentController() {
+function ParentController() {  
   this.config = {
     // Google Spreadsheet key (can be found in url bar when viewing sheet)
     sheet: '1jEAO4g_C0NfGkMrLiqIIcXxbOmbfY5mvZ7GzevSi_5c',
@@ -59,7 +59,7 @@ function ParentController() {
 
 3. Add element to template
   ```html
-  <ng-google-sheets config="ctrl.config"></ng-google-sheets>
+    <ng-google-sheets config="ctrl.config"></ng-google-sheets>
   ```
 
 ## Running locally
