@@ -10,7 +10,7 @@
     "angular": "angular"
   },
   "bugs": {
-    "url": "https://github.com/theponti/angular-datagrid/issues"
+    "url": "https://github.com/theponti/ng-google-sheet/issues"
   },
   "dependencies": {
     "accounting": "^0.4.1",
@@ -53,7 +53,7 @@
     "superstatic": "^1.1.6",
     "vinyl-source-stream": "^1.0.0"
   },
-  "homepage": "https://github.com/theponti/angular-datagrid",
+  "homepage": "https://github.com/theponti/ng-google-sheet",
   "keywords": [
     "static",
     "node",
@@ -66,7 +66,7 @@
   "main": "gulpfile.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/theponti/angular-datagrid.git"
+    "url": "git://github.com/theponti/ng-google-sheet.git"
   },
   "scripts": {
     "build": "gulp build",
