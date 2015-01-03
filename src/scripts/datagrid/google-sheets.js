@@ -7,9 +7,7 @@ var fx = require('money');
  */
 module.exports = function($q, $http, Constants) {
 
-  var base = 'https://spreadsheets.google.com/feeds/list/:key/ow1vgqx/public/basic?alt=json';
-  var key = '1jEAO4g_C0NfGkMrLiqIIcXxbOmbfY5mvZ7GzevSi_5c';
-
+  // var key = '1jEAO4g_C0NfGkMrLiqIIcXxbOmbfY5mvZ7GzevSi_5c';
 
   var baseRegex = [
     '(',
@@ -69,7 +67,7 @@ module.exports = function($q, $http, Constants) {
 
     // Request spreadsheet
     $http
-    .get(base.replace(':key', key))
+    .get(Constants.googleSheetsUrl.replace(':key', key))
     .success(function(response) {
       return defer.resolve(service.formatData(response));
     })

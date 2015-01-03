@@ -7,24 +7,19 @@ window.jQuery = require('jquery');
 // This will add these dependencies to the global scope
 require('angular');
 require('angular-route');
-require('../../node_modules/ng-grid/build/ng-grid');
 
 // Request Application dependencies
 require('./templates');
-require('./services');
-require('./directives');
+require('./datagrid');
 require('./controllers');
 
 // Declare module and configure
-angular.module('trDatagrid', [
+angular.module('app', [
     'ngRoute',
-    'ngGrid',
     'templates',
-    'trDatagrid.services',
-    'trDatagrid.directives',
-    'trDatagrid.controllers'
+    'ngGoogleSheet',
+    'app.controllers'
   ])
-  .config(require('./config'))
-  .constant('Constants', require('./constants'));
+  .config(require('./config'));
 
-angular.bootstrap(document, ['trDatagrid']);
+angular.bootstrap(document, ['app']);

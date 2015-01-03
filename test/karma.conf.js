@@ -5,7 +5,9 @@ module.exports = function(config) {
 
     browsers: [
       'Chrome',
-      'Firefox'
+      // Have commented out `Firefox` as there is currently an issue with the
+      // Firefox throwing an error: https://github.com/karma-runner/karma/pull/1098
+      // 'Firefox'
     ],
 
     frameworks: [
@@ -15,28 +17,27 @@ module.exports = function(config) {
 
     files: [
       // App file
-      'src/scripts/main.js',
+      '../src/scripts/main.js',
       // libraries
-      'node_modules/angular-mocks/angular-mocks.js',
+      '../node_modules/angular-mocks/angular-mocks.js',
       // Tests
-      'test/unit/**/*spec.js'
+      './unit/**/*.js'
     ],
 
     preprocessors: {
       // Use Browserify for Test files
-      'test/unit/**/*spec.js': 'browserify',
+      './unit/**/*.js': ['browserify'],
       // Use Browserify for app files
-      'src/scripts/**/*.js': 'browserify'
+      '../src/scripts/**/*.js': ['browserify']
     },
 
     browserify: {
-      debug: true,
-      extensions: ['.js']
+      debug: true
     },
 
     plugins: [
+      'karma-bro',
       'karma-jasmine',
-      'karma-browserify',
       'karma-chrome-launcher',
       'karma-firefox-launcher'
     ]
