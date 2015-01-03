@@ -3,35 +3,20 @@
     <table class="table-striped" ng-show='vm.rows.length' ng-mouseleave="vm.removeHighlight()">
         <thead>
             <tr>
-                <th ng-click="vm.onHeaderClick('ticker', $event)">
-                    Ticker
-                    <span class="arrow"></span>
-                </th>
-                <th ng-click="vm.onHeaderClick('industry',$event)">
-                    Industry
-                    <span class="arrow"></span>
-                </th>
-                <th ng-click="vm.onHeaderClick('marketcap',$event)">
-                    Market Cap
-                    <span class="arrow"></span>
-                </th>
-                <th ng-click="vm.onHeaderClick('change',$event)">
-                    Change
-                    <span class="arrow"></span>
-                </th>
-                <th ng-click="vm.onHeaderClick('price',$event)">
-                    Price
-                    <span class="arrow"></span>
-                </th>
-                <th ng-click="vm.onHeaderClick('volume',$event)">
-                    Volume
-                    <span class="arrow"></span>
+                <th ng-repeat="column in vm.columns">
+                    <div ng-click="vm.onHeaderClick(column.field, $event)" >
+                        {{ column.header }}
+                        <span class="arrow"></span>
+                    </div>
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat='row in vm.rows'>
-                <td ng-mouseover="vm.onCellHover('ticker')"  data-key='ticker'>
+                <td ng-repeat="column in vm.columns" ng-mouseover="vm.onCellHover(column.field)"  data-key='column.field'>
+                    {{ vm.formatColumnValue(column.field, column, row) }}
+                </td>
+                <!-- <td ng-mouseover="vm.onCellHover('ticker')"  data-key='ticker'>
                     {{ row.ticker }}
                 </td>
                 <td ng-mouseover="vm.onCellHover('industry')"  data-key='industry'>
@@ -48,7 +33,7 @@
                 </td>
                 <td ng-mouseover="vm.onCellHover('volume')"  data-key='volume'>
                     {{ vm.formatNumber(row.volume) }}
-                </td>
+                </td> -->
             </tr>
         </tbody>
     </table>
