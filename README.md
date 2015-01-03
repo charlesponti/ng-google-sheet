@@ -1,6 +1,6 @@
 [ ![Codeship Status for theponti/ng-google-sheet](https://codeship.com/projects/db097c90-7576-0132-e514-22ab3bab314c/status?branch=master)](https://codeship.com/projects/55147)
 
-# Angular-Datagrid
+# ng-google-sheet
 
 A Google Sheets API datagrid build with AngularJS
 
