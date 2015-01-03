@@ -7,7 +7,7 @@ var accounting = require('accounting');
 /**
  * @ngInject
  */
-module.exports = function ($element, GoogleSheets, $attrs) {
+module.exports = function ($scope, $element, GoogleSheets, $attrs) {
 
   /**
    * @desc Store reference to controller as 'vm', as per recommendation from
@@ -90,6 +90,102 @@ module.exports = function ($element, GoogleSheets, $attrs) {
     vm.rows = data.rows;
   };
 
+  vm.columns = $scope.config.columns || [];
+
+  vm.getColumns = function(data) {
+    if ($scope.config.columns) {
+      return $scope.config.columns;
+    }
+
+    var cache = [];
+
+    // Handle potential issues with the passed in value
+    if (!data || typeof(data[0]) === 'undefined' || data[0] === undefined) {
+      return [];
+    }
+
+    // Crate array with unique column names
+    data.forEach(function(col) {
+      return _.merge(cache, Object.keys(col));
+    });
+
+    // Return array of column names with falsy values removed
+    vm.columns = _.compact(cache.map(vm.formatColumn));
+  };
+
+  /**
+   * @desc Format column
+   * @param {*} column
+   * @return {String}
+   */
+  vm.formatColumn = function(column) {
+    if (typeof column !== 'string') {
+      return;
+    }
+
+    return vm.formatColumnName(column);
+  };
+
+  /**
+   * @desc Format value to display in column based on column.type
+   * @param {String} field Name of field
+   * @param {Object} column Column configuration
+   * @param {Object} data Record being displayed in row
+   * @returns {*}
+   */
+  vm.formatColumnValue = function(field, column, data) {
+    var formattedValue;
+    var value = data[field];
+
+    // If no value, return empty string
+    if (value === undefined || value === null) {
+      return '';
+    }
+
+    // If column has no type, return raw value
+    if (!column.type) {
+      return data[field];
+    }
+
+    switch(column.type) {
+      case 'money':
+        formattedValue = vm.formatMoney(value);
+        break;
+      case 'percentage':
+        formattedValue = value + ' %';
+        break;
+      case 'number':
+        formattedValue = vm.formatNumber(value, 2);
+        break;
+      default:
+        formattedValue = value;
+    }
+
+    return formattedValue;
+  };
+
+  /**
+   * @desc Format column name
+   * @param {String} name Name of column
+   * @return {String}
+   */
+  vm.formatColumnName = function(name) {
+    return name
+      .replace(/_+/g, ' ')
+      // Replace a completely all-capsed word with a
+      // first-letter-capitalized version
+      .replace(/^[A-Z]+$/, function (match) {
+        return angular.lowercase(angular.uppercase(match.charAt(0)) + match.slice(1));
+      })
+      // Capitalize the first letter of words
+      .replace(/(\w+)/g, function (match) {
+        return angular.uppercase(match.charAt(0)) + match.slice(1);
+      })
+      // Put a space in between words that have partial capilizations
+      // (i.e. 'firstName' becomes 'First Name')
+      .replace(/(\w+?(?=[A-Z]))/g, '$1 ');
+  };
+
   /**
    * @desc Display message to user if Google Sheets API request fails
    * @return {Object} vm
@@ -130,7 +226,7 @@ module.exports = function ($element, GoogleSheets, $attrs) {
     var target = $($event.target);
 
     // Toggle .highlight
-    $element.find('tr th, .arrow').removeClass('highlight');
+    $element.find('.highlight').removeClass('highlight');
 
     // Empty icons
     $element.find('.arrow').html('');
@@ -191,7 +287,7 @@ module.exports = function ($element, GoogleSheets, $attrs) {
    * Load spreadsheet
    */
   GoogleSheets
-    .get($attrs.sheet)
+    .get($scope.config.sheet)
     .then(vm.onGetSuccess)
     .catch(vm.onGetFail);
 

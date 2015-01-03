@@ -9,24 +9,33 @@ describe('Module: datagrid', function() {
     angular.mock.module('ngGoogleSheet');
 
     // Create element
-    element = angular.element('<ng-google-sheet key="fooKey"></ng-google-sheet>');
+    element = angular.element('<ng-google-sheet config="config"></ng-google-sheet>');
 
     angular.mock.inject(function($compile, $rootScope, $q, GoogleSheets, $controller){
       // Spy on GoogleSheets.get so as to not make actual API requests
       spyOn(GoogleSheets, 'get').and.returnValue($q.defer().promise);
       // The injector unwraps the underscores (_) from around the parameter names when matching
       scope = $rootScope;
+
+      // Add config which would be passed from parent controller
+      scope.config = {
+        columns: []
+      };
+
       // Compile element
       $compile(element)(scope);
+
       // fire all the watches, so the scope expressions will be evaluated
       scope.$digest();
+
       // Create controller
       ctrl = $controller(require('../../../src/scripts/datagrid/controller'), {
-        $scope: $rootScope.$new(),
+        $scope: scope,
         GoogleSheets: GoogleSheets,
         $attrs: { key: 'fooKey' },
         $element: element
       });
+
       done();
     });
   });
@@ -78,17 +87,52 @@ describe('Module: datagrid', function() {
         rows: [
           { ticker: 'C', industry: 'Banking' },
           { ticker: 'JPM', industry: 'Banking' }
-          ]
-        };
-        it('should set $ctrl.title', function() {
-          ctrl.onGetSuccess(data);
-          expect(ctrl.title).toEqual(data.title);
-        });
-        it('should set $ctrl.rows', function() {
-          ctrl.onGetSuccess(data);
-          expect(ctrl.rows).toEqual(data.rows);
-        });
+        ]
+      };
+      it('should set $ctrl.title', function() {
+        ctrl.onGetSuccess(data);
+        expect(ctrl.title).toEqual(data.title);
       });
+      it('should set $ctrl.rows', function() {
+        ctrl.onGetSuccess(data);
+        expect(ctrl.rows).toEqual(data.rows);
+      });
+    });
+
+    describe('.formatColumnName()', function() {
+
+    });
+
+    describe('.formatColumnValue()', function() {
+      it('should return empty string for undefined', function() {
+        var val = ctrl.formatColumnValue('foo', { type: 'number' }, { foo: undefined });
+        expect(val).toEqual('');
+      });
+      it('should return raw value if no column.type', function() {
+        var val = ctrl.formatColumnValue('foo', {}, { foo: 10.24 });
+        expect(val).toEqual(10.24);
+      });
+      it('should return empty string for null', function() {
+        var val = ctrl.formatColumnValue('foo', { type: 'number' }, { foo: null });
+        expect(val).toEqual('');
+      });
+      it('should format percentage', function() {
+        var val = ctrl.formatColumnValue('foo', { type: 'percentage' }, { foo: 10.2 });
+        expect(val).toEqual('10.2 %');
+      });
+      it('should format money', function() {
+        var val = ctrl.formatColumnValue('foo', { type: 'money' }, { foo: 10.24 });
+        expect(val).toEqual('£ 10.24');
+      });
+      it('should format number', function() {
+        var val = ctrl.formatColumnValue('foo', { type: 'number' }, { foo: 1024 });
+        expect(val).toEqual('1,024.00');
+      });
+      it('should return raw value if column.type no supported', function() {
+        var val = ctrl.formatColumnValue('foo', { type: 'foo' }, { foo: 1024 });
+        expect(val).toEqual(1024);
+      });
+    });
 
     describe('.sortAsc()', function() {
       it('should sort the rows in ascending order', function() {

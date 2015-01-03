@@ -35,17 +35,18 @@
         }
     }
 
+    .highlight {
+        color: orange;
+    }
+    
     // Style for table cells
     th, td {
         position: relative;
         color: grey;
-        padding: 0.8em 0;
+        padding: 0.8em;
         font-size: 1em;
         &:first-child {
             padding-left: 0.8em;
-        }
-        &.highlight {
-            color: orange;
         }
         &.red {
             color: red;

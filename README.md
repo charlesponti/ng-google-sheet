@@ -8,6 +8,61 @@ A Google Sheets API datagrid build with AngularJS
 * NodeJS & NPM
 
 ## Usage
+
+1. Include ngGoogleSheets in requires
+  ```js
+  angular.module('app', [ 'ngGoogleSheets' ]);
+  ```
+2. Set up config in parent container
+```js
+function ParentController() {  
+  this.config = {
+    // Google Spreadsheet key (can be found in url bar when viewing sheet)
+    sheet: '1jEAO4g_C0NfGkMrLiqIIcXxbOmbfY5mvZ7GzevSi_5c',
+    // Columns to display
+    columns: [
+      {
+        // This is the field name of the column
+        field: 'ticker',
+        // This will appear in the header of the grid
+        header: 'Ticker'
+      },
+      {
+        field: 'industry',
+        header: 'Industry'
+      },
+      {
+        field: 'marketcap',
+        header: 'Market Cap',
+        // This is the type of value to display
+        type: 'money'
+      },
+      {
+        field: 'change',
+        header: 'Change',
+        type: 'percentage'
+      },
+      {
+        field: 'price',
+        header: 'Price',
+        type: 'money'
+      },
+      {
+        field: 'volume',
+        header: 'Volume',
+        type: 'number'
+      }
+    ]
+  };
+}
+```
+
+3. Add element to template
+  ```html
+    <ng-google-sheets config="ctrl.config"></ng-google-sheets>
+  ```
+
+## Running locally
 1. Clone repo
 2. Run `npm run bootstrap`
 3. Run `npm start` for production mode or `npm run dev` for development mode.

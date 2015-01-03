@@ -10,13 +10,9 @@ module.exports = function($locationProvider, $routeProvider) {
 
   // Set routes
   return $routeProvider
-    .when('/about', {
-      templateUrl: 'about.html',
-      controller: 'AboutCtrl'
-    })
     .when('/', {
       templateUrl: 'home.html',
-      controller: 'HomeCtrl'
+      controller: 'HomeCtrl as vm'
     })
     .otherwise({
       redirectTo: '/'
