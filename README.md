@@ -2,7 +2,20 @@
 
 # Angular-Datagrid
 
-A datagrid build with AngularJS & GoogleSheets
+A Google Sheets API datagrid build with AngularJS
+
+
+## Usage
+
+```js
+  angular.module('app', [
+    'google-sheets-grid'
+  ]);
+```
+
+```html
+  <ng-google-sheet key="GOOGLE_SPREADSHEET_KEY"></ng-google-sheet>
+```
 
 ## Dependencies
 * NodeJS
