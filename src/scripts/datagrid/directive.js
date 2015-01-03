@@ -21,7 +21,13 @@ module.exports = function($templateCache) {
      * @desc Declare scope for directive
      * @type {Object}
      */
-    scope: {},
+    scope: {
+      /**
+       * @desc This value will be the configuration of the grid
+       * @type {String}
+       */
+      config: '=config'
+    },
     /**
      * @desc Template to be used for directive
      * @type {String}
