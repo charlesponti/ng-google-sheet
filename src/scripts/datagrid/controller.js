@@ -86,6 +86,7 @@ module.exports = function ($scope, $element, GoogleSheets, $attrs) {
    * @param {Object} data
    */
   vm.onGetSuccess = function(data) {
+    console.log(data);
     vm.title = data.title;
     vm.rows = data.rows;
   };
@@ -155,7 +156,7 @@ module.exports = function ($scope, $element, GoogleSheets, $attrs) {
         formattedValue = value + ' %';
         break;
       case 'number':
-        formattedValue = vm.formatNumber(value);
+        formattedValue = vm.formatNumber(value, 2);
         break;
       default:
         formattedValue = value;
