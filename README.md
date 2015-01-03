@@ -4,19 +4,6 @@
 
 A Google Sheets API datagrid build with AngularJS
 
-
-## Usage
-
-```js
-  angular.module('app', [
-    'ngGoogleSheet'
-  ]);
-```
-
-```html
-  <ng-google-sheet key="GOOGLE_SPREADSHEET_KEY"></ng-google-sheet>
-```
-
 ## Dependencies
 * NodeJS
 * NPM
@@ -26,28 +13,34 @@ A Google Sheets API datagrid build with AngularJS
 
 ### Build
 * Gulp
-  This boilerplate uses the version of `Gulp` in the `node_modules` directory so you will not need to have it installed globally.
 * Browserify
+* ng-annotate
 
-### Styles
-* **SASS**
-* **Prefix-Free**
-* **Bootstrap**
+### CSS
 
-### Scripts
-* JSHint
-* jQuery
-* Angular (v1.3.8)
-  * Angular-Route
+#### Included Libraries:
+* SASS
+* Bootstrap
+
+### JavaScript
+All JavaScript files within the `/src/scripts` directory are run through JSHint and then bundled together using Browserify. The `ng-annotate` transform is used with Browserify in order to properly construct the Angular application with the correct injections. While in development mode, the build step also includes creating the source maps. While in production mode, no source maps are created and the `bundle.js` file in uglified and minified.
+
+#### Included Libraries:
+* jquery
+* lodash
+* angular
+* angular-route
+* angular-resource
+* accounting
+* money
 
 ### Testing
 * Karma
-  This boilerplate uses the version of `Karma` in the `node_modules` directory so you will not need to have it installed globally.
 * Jasmine
+* Protractor
 
-### Other
-* Modernizer
-* HTML Minification
+### HTML
+All HTML is minified and stored in the `/build` directory. Any `.html` file within the `/src/views` directory will be compiled into `templates.js` for use in Angular's $templateCache. This way switch between routes and loading directives will not require any additional HTTP requests as the view will be loaded from the cache.
 
 ## Usage
 1. Clone repo
