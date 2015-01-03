@@ -7,8 +7,6 @@ var fx = require('money');
  */
 module.exports = function($q, $http, Constants) {
 
-  // var key = '1jEAO4g_C0NfGkMrLiqIIcXxbOmbfY5mvZ7GzevSi_5c';
-
   var baseRegex = [
     '(',
     Constants.CURRENCY_SYMBOLS
