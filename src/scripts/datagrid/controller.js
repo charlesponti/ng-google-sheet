@@ -86,7 +86,6 @@ module.exports = function ($scope, $element, GoogleSheets, $attrs) {
    * @param {Object} data
    */
   vm.onGetSuccess = function(data) {
-    console.log(data);
     vm.title = data.title;
     vm.rows = data.rows;
   };
