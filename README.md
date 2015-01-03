@@ -34,13 +34,16 @@ All JavaScript files within the `/src/scripts` directory are run through JSHint 
 * accounting
 * money
 
+### HTML
+All HTML is minified and stored in the `/build` directory. Any `.html` file within the `/src/views` directory will be compiled into `templates.js` for use in Angular's $templateCache. This way switch between routes and loading directives will not require any additional HTTP requests as the view will be loaded from the cache.
+
 ### Testing
 * Karma
 * Jasmine
 * Protractor
 
-### HTML
-All HTML is minified and stored in the `/build` directory. Any `.html` file within the `/src/views` directory will be compiled into `templates.js` for use in Angular's $templateCache. This way switch between routes and loading directives will not require any additional HTTP requests as the view will be loaded from the cache.
+### Deployment
+When the master branch is updated on GitHub, the application is run through Codeship which builds the app, runs the tests, and then deploys to Divshot.
 
 ## Usage
 1. Clone repo
