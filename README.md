@@ -9,11 +9,12 @@ A Google Sheets API datagrid build with AngularJS
 
 ## Usage
 
-1. Include ngGoogleSheets in requires
-  ```js
-  angular.module('app', [ 'ngGoogleSheets' ]);
-  ```
-2. Set up config in parent container
+1. Include ngGoogleSheets in requires  
+```js
+angular.module('app', [ 'ngGoogleSheets' ]);
+```
+
+2. Set up config in parent container  
 ```js
 function ParentController() {  
   this.config = {
@@ -57,10 +58,10 @@ function ParentController() {
 }
 ```
 
-3. Add element to template
-  ```html
-    <ng-google-sheets config="ctrl.config"></ng-google-sheets>
-  ```
+3. Add element to template  
+```html
+  <ng-google-sheets config="ctrl.config"></ng-google-sheets>
+```
 
 ## Running locally
 1. Clone repo
