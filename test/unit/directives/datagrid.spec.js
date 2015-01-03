@@ -99,10 +99,18 @@ describe('Module: datagrid', function() {
       });
     });
 
+    describe('.formatColumnName()', function() {
+
+    });
+
     describe('.formatColumnValue()', function() {
       it('should return empty string for undefined', function() {
         var val = ctrl.formatColumnValue('foo', { type: 'number' }, { foo: undefined });
         expect(val).toEqual('');
+      });
+      it('should return raw value if no column.type', function() {
+        var val = ctrl.formatColumnValue('foo', {}, { foo: 10.24 });
+        expect(val).toEqual(10.24);
       });
       it('should return empty string for null', function() {
         var val = ctrl.formatColumnValue('foo', { type: 'number' }, { foo: null });
@@ -119,6 +127,10 @@ describe('Module: datagrid', function() {
       it('should format number', function() {
         var val = ctrl.formatColumnValue('foo', { type: 'number' }, { foo: 1024 });
         expect(val).toEqual('1,024');
+      });
+      it('should return raw value if column.type no supported', function() {
+        var val = ctrl.formatColumnValue('foo', { type: 'foo' }, { foo: 1024 });
+        expect(val).toEqual(1024);
       });
     });
 
