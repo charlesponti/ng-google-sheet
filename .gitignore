@@ -1,9 +1,10 @@
 .sass-cache
 .DS_Store
-build/**/*.js
-build/**/*.css
-build/**/*.map
-build/**/*.html
+build/vendor/**
+build/scripts/**
+build/styles/**
+build/views/**
+build/index.html
 node_modules
 *.log
 src/scripts/templates.js
