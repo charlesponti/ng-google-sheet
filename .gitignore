@@ -7,3 +7,4 @@ build/**/*.html
 node_modules
 *.log
 src/scripts/templates.js
+.divshot-cache/
