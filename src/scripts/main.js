@@ -17,7 +17,7 @@ require('./controllers');
 angular.module('app', [
     'ngRoute',
     'templates',
-    'datagrid',
+    'ngGoogleSheet',
     'app.controllers'
   ])
   .config(require('./config'));
