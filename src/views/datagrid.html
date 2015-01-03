@@ -15,14 +15,10 @@
             <tr ng-repeat='row in vm.rows'>
                 <td ng-repeat="column in vm.columns"
                     ng-mouseover="vm.onCellHover(column.field)"
-                    data-key='{{column.field}}'>
+                    data-key='{{column.field}}'
+                    ng-class="{red: (column.field == 'change' && row.change < 0), green: (column.field == 'change' && row.change > 0)}">
                     {{ vm.formatColumnValue(column.field, column, row) }}
                 </td>
-                <!--
-                <td ng-mouseover="vm.onCellHover('change')"  data-key='change' ng-class="{red: (row.change < 0), green: (row.change > 0)}">
-                    {{ row.change }} %
-                </td>
-                -->
             </tr>
         </tbody>
     </table>
