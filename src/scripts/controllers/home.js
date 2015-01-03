@@ -19,7 +19,7 @@ module.exports = function() {
       {
         field: 'marketcap',
         header: 'Market Cap',
-        type: 'money'
+        type: 'number'
       },
       {
         field: 'change',
