@@ -226,7 +226,7 @@ module.exports = function ($scope, $element, GoogleSheets, $attrs) {
     var target = $($event.target);
 
     // Toggle .highlight
-    $element.find('tr th, .arrow').removeClass('highlight');
+    $element.find('.highlight').removeClass('highlight');
 
     // Empty icons
     $element.find('.arrow').html('');
