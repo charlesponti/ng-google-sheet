@@ -1,8 +1,8 @@
 [ ![Codeship Status for theponti/angular-datagrid](https://codeship.com/projects/cce16f70-72fa-0132-d565-5ad4053fa8e4/status?branch=master)](https://codeship.com/projects/54872)
 
-# Facade-Angular
+# Angular-Datagrid
 
-A client-side AngularJS boilerplate solution
+A datagrid build with AngularJS & GoogleSheets
 
 ## Dependencies
 * NodeJS
@@ -42,17 +42,3 @@ A client-side AngularJS boilerplate solution
 3. Run `rm -rf .git && git init`
 4. Run `npm run start`
 5. Start Coding
-
-## Tasks
-
-### `npm run start`
-This task builds the scripts, styles, and html, and it will also begin the development server at port 4000.
-
-### `npm run build`
-This task builds the scripts, styles, and html.
-
-### `npm run build-prod`
-This task will build the production, minified versions of the scripts and styles.
-
-### `npm test`
-This task will begin `Karma`.
