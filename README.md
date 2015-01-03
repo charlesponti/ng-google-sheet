@@ -5,25 +5,24 @@
 A Google Sheets API datagrid build with AngularJS
 
 ## Dependencies
-* NodeJS
-* NPM
-* Bower
+* NodeJS & NPM
+
+## Usage
+1. Clone repo
+2. Run `npm install && bower install`
+4. Run `npm run dev`
 
 ## Features
 
-### Build
-* Gulp
-* Browserify
-* ng-annotate
-
 ### CSS
+The CSS for the application is written using the Sass preprocessor and is stored in the `src/styles` directory. The build file, `build/styles/main.css`, is constructed with source maps while in development and is concatinated while in production mode.
 
 #### Included Libraries:
 * SASS
 * Bootstrap
 
 ### JavaScript
-All JavaScript files within the `/src/scripts` directory are run through JSHint and then bundled together using Browserify. The `ng-annotate` transform is used with Browserify in order to properly construct the Angular application with the correct injections. While in development mode, the build step also includes creating the source maps. While in production mode, no source maps are created and the `bundle.js` file in uglified and minified.
+All JavaScript files within the `src/scripts` directory are run through JSHint and then bundled together using Browserify. The `ng-annotate` transform is used with Browserify in order to properly construct the Angular application with the correct injections. While in development mode, the build step also includes creating the source maps. While in production mode, no source maps are created and the `bundle.js` file in uglified and minified.
 
 #### Included Libraries:
 * jquery
@@ -42,12 +41,8 @@ All HTML is minified and stored in the `/build` directory. Any `.html` file with
 * Jasmine
 * Protractor
 
+### Tasks
+Gulp is used to executed the tasks used in developing, testing, and building the application.
+
 ### Deployment
 When the master branch is updated on GitHub, the application is run through Codeship which builds the app, runs the tests, and then deploys to Divshot.
-
-## Usage
-1. Clone repo
-2. Run `npm install && bower install`
-3. Run `rm -rf .git && git init`
-4. Run `npm run start`
-5. Start Coding
