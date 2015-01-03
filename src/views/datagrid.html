@@ -13,27 +13,16 @@
         </thead>
         <tbody>
             <tr ng-repeat='row in vm.rows'>
-                <td ng-repeat="column in vm.columns" ng-mouseover="vm.onCellHover(column.field)"  data-key='column.field'>
+                <td ng-repeat="column in vm.columns"
+                    ng-mouseover="vm.onCellHover(column.field)"
+                    data-key='{{column.field}}'>
                     {{ vm.formatColumnValue(column.field, column, row) }}
                 </td>
-                <!-- <td ng-mouseover="vm.onCellHover('ticker')"  data-key='ticker'>
-                    {{ row.ticker }}
-                </td>
-                <td ng-mouseover="vm.onCellHover('industry')"  data-key='industry'>
-                    {{ row.industry }}
-                </td>
-                <td ng-mouseover="vm.onCellHover('marketcap')"  data-key='marketcap'>
-                    {{ vm.formatMoney(row.marketcap) }}
-                </td>
+                <!--
                 <td ng-mouseover="vm.onCellHover('change')"  data-key='change' ng-class="{red: (row.change < 0), green: (row.change > 0)}">
                     {{ row.change }} %
                 </td>
-                <td ng-mouseover="vm.onCellHover('price')"  data-key='price'>
-                    {{ vm.formatMoney(row.price) }}
-                </td>
-                <td ng-mouseover="vm.onCellHover('volume')"  data-key='volume'>
-                    {{ vm.formatNumber(row.volume) }}
-                </td> -->
+                -->
             </tr>
         </tbody>
     </table>
