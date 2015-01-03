@@ -9,24 +9,33 @@ describe('Module: datagrid', function() {
     angular.mock.module('ngGoogleSheet');
 
     // Create element
-    element = angular.element('<ng-google-sheet key="fooKey"></ng-google-sheet>');
+    element = angular.element('<ng-google-sheet config="config"></ng-google-sheet>');
 
     angular.mock.inject(function($compile, $rootScope, $q, GoogleSheets, $controller){
       // Spy on GoogleSheets.get so as to not make actual API requests
       spyOn(GoogleSheets, 'get').and.returnValue($q.defer().promise);
       // The injector unwraps the underscores (_) from around the parameter names when matching
       scope = $rootScope;
+
+      // Add config which would be passed from parent controller
+      scope.config = {
+        columns: []
+      };
+
       // Compile element
       $compile(element)(scope);
+
       // fire all the watches, so the scope expressions will be evaluated
       scope.$digest();
+
       // Create controller
       ctrl = $controller(require('../../../src/scripts/datagrid/controller'), {
-        $scope: $rootScope.$new(),
+        $scope: scope,
         GoogleSheets: GoogleSheets,
         $attrs: { key: 'fooKey' },
         $element: element
       });
+
       done();
     });
   });
