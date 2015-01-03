@@ -1,14 +1,36 @@
-.datagrid {
-    background: white;
-}
 
-.custom-grid {
+.datagrid {
     border: 1px solid #ccc;
     border-radius: 10px;
     height: 100%;
+    overflow: hidden;
+
+    &>table {
+        min-width: 100%;
+    }
+
+    .hover {
+        background-color: $blue;
+    }
+
+    & thead {
+        min-height: 30px;
+        background-color: $blue;
+
+        tr th {
+
+            padding-top: 7px;
+            padding-bottom: 7px;
+            font-size: 16px;
+        }
+
+        th:hover {
+            cursor: pointer;
+        }
+    }
 
     // Style for table rows
-    .table-striped>tbody>tr {
+    & tbody>tr {
         &:first-child {
             background-color: $blue;
         }
@@ -18,11 +40,12 @@
     }
 
     // Style for table cells
-    th, td,
-    .table-striped>tbody>th,
-    .table-striped>tbody>td, {
+    th, td {
         position: relative;
         color: grey;
+        &:first-child {
+            padding-left: 6px;
+        }
         &.highlight {
             color: orange;
         }
@@ -49,39 +72,4 @@
         height: 500px;
         overflow-y: scroll;
     }
-}
-
-.ngHeaderContainer {
-    background-color: $blue;
-}
-
-.hover {
-    background-color: $blue;
-}
-
-// Kill border
-.ngCell,
-.ngHeaderCell {
-    border: 0px;
-}
-
-.ngSortButtonUp,
-.ngSortButtonDown {
-    top: 13px;
-    left: inherit;
-}
-
-.ngRow:hover {
-    background-color: $blue;
-}
-
-.table-head {
-    background-color: $blue;
-    th:hover {
-        cursor: pointer;
-    }
-}
-
-.table-row:hover {
-    background-color: $blue;
 }
