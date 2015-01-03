@@ -9,7 +9,7 @@ A Google Sheets API datagrid build with AngularJS
 
 ```js
   angular.module('app', [
-    'google-sheets-grid'
+    'ngGoogleSheet'
   ]);
 ```
 
