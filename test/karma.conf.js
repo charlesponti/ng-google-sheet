@@ -36,8 +36,8 @@ module.exports = function(config) {
     },
 
     plugins: [
-      'karma-bro',
       'karma-jasmine',
+      'karma-browserify',
       'karma-chrome-launcher',
       'karma-firefox-launcher'
     ]
