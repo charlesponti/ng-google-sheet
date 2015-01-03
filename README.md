@@ -9,8 +9,8 @@ A Google Sheets API datagrid build with AngularJS
 
 ## Usage
 1. Clone repo
-2. Run `npm install && bower install`
-4. Run `npm run dev`
+2. Run `npm run bootstrap`
+3. Run `npm start` for production mode or `npm run dev` for development mode.
 
 ## Features
 
