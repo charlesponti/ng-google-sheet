@@ -126,7 +126,7 @@ describe('Module: datagrid', function() {
       });
       it('should format number', function() {
         var val = ctrl.formatColumnValue('foo', { type: 'number' }, { foo: 1024 });
-        expect(val).toEqual('1,024');
+        expect(val).toEqual('1,024.00');
       });
       it('should return raw value if column.type no supported', function() {
         var val = ctrl.formatColumnValue('foo', { type: 'foo' }, { foo: 1024 });
