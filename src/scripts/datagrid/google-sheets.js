@@ -6,7 +6,16 @@ var fx = require('money');
  * @ngInject
  */
 module.exports = function($q, $http, Constants) {
+  /**
+   * @desc Reference to service
+   * @type {Object}
+   */
+  var service = {};
 
+  /**
+   * @desc Base RegExp to use
+   * @type {String}
+   */
   var baseRegex = [
     '(',
     Constants.CURRENCY_SYMBOLS
@@ -18,11 +27,18 @@ module.exports = function($q, $http, Constants) {
     ')?'
     ].join('');
 
-  // /^[-+]?[£$¤¥]?[\d,.]+%?$/
+  /**
+   * @desc RegExp for numbers, including currencies
+   * @type {RegExp}
+   */
   var numberRegex = new RegExp('^[-+]?'+baseRegex+'[\\d,.]+'+baseRegex+'%?$');
 
-  var service = {};
-
+  /**
+   * @desc Parse spreadsheet row content to find keys and values from columns
+   * and rows
+   * @param {Object} row
+   * @return {Function}
+   */
   service.getKeyAndValue = function(row) {
     return function(keyData) {
       var key = keyData.match(/\w*\W\s/)[0];
@@ -36,6 +52,11 @@ module.exports = function($q, $http, Constants) {
     };
   };
 
+  /**
+   * @desc Construct object from spreadsheet row
+   * @param {Object} entry Single row from API response
+   * @return {Object}
+   */
   service.getRows = function(entry) {
     var row = {
       ticker: entry.title.$t
@@ -47,8 +68,8 @@ module.exports = function($q, $http, Constants) {
   };
 
   /**
-   * Format data received from Google Sheets API
-   * @param {Objec} response
+   * @desc Format data received from Google Sheets API
+   * @param {Object} response
    */
   service.formatData = function(response) {
     var data = {
@@ -60,6 +81,11 @@ module.exports = function($q, $http, Constants) {
     return data;
   };
 
+  /**
+   * @desc Get Google Sheet from API
+   * @param  {String} key Google Spreadsheet key
+   * @return {Promise}
+   */
   service.get = function(key) {
     var defer = $q.defer();
 
