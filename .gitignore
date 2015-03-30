@@ -1,11 +1,6 @@
-.sass-cache
 .DS_Store
-build/vendor/**
-build/scripts/**
-build/styles/**
-build/views/**
-build/index.html
+build
+bower_components
 node_modules
 *.log
-src/scripts/templates.js
-.divshot-cache/
+.idea
