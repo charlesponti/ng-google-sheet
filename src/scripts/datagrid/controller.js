@@ -1,13 +1,6 @@
 'use strict';
 
-var $ = require('jquery');
-var _ = require('lodash');
-var accounting = require('accounting');
-
-/**
- * @ngInject
- */
-module.exports = function ($scope, $element, GoogleSheets, $attrs) {
+function DatagridController($scope, $element, GoogleSheets) {
 
   /**
    * @desc Store reference to controller as 'vm', as per recommendation from
@@ -293,4 +286,9 @@ module.exports = function ($scope, $element, GoogleSheets, $attrs) {
 
   return vm;
 
-};
+}
+
+// Inject dependencies
+DatagridController.$inject = [ '$scope', '$element', 'GoogleSheets' ];
+
+export default DatagridController;
