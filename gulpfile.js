@@ -6,41 +6,26 @@ global.isProd = false;
 // Current working directory
 var cwd = process.cwd();
 
-var runSequence = require('run-sequence');
-
 // Gulp & Plugins
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-
-var gulpif = $.if;
-var concat = $.concat;
-var uglify = $.uglify;
-var streamify = $.streamify;
-var minifyHTML = $.minifyHtml;
-var templateCache = $.angularTemplatecache;
 
 // Styles
 var sass = require('gulp-sass');
 var minifycss = require('gulp-minify-css');
 
 // Scripts
-var jshint = require('gulp-jshint');
+var babelify = require('babelify');
 var browserify = require('browserify');
-var stylish = require('jshint-stylish');
 var source = require('vinyl-source-stream');
-var ngannotate = require('browserify-ngannotate');
-
-// Testing
-var karma = require('karma');
-var protractor = require('gulp-protractor').protractor;
-var webdriver = require('gulp-protractor').webdriver;
-var webdriverUpdate = require('gulp-protractor').webdriver_update;
-
-// Dev Server
 var superstatic = require('superstatic');
+var runSequence = require('run-sequence');
 
-gulp.task('webdriver-update', webdriverUpdate);
-gulp.task('webdriver', webdriver);
+/**
+ * If gulp tasks should be run in production mode
+ * @type {boolean}
+ */
+var isProd = require('yargs').argv.prod;
 
 var files = {
   scripts: {
@@ -59,77 +44,43 @@ var files = {
   }
 };
 
-gulp.task('jshint', function() {
-  return gulp.src(files.scripts.source)
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish));
-});
-
-gulp.task('scripts', ['jshint'], function() {
+gulp.task('scripts', function() {
   return browserify({
       entries: [files.scripts.main],
-      debug: global.isProd ? false : true,
+      debug: !isProd,
       insertGlobals: true,
-      transform: ngannotate
+      transform: babelify
     })
     .bundle()
     .pipe(source('bundle.js'))
-    .pipe(gulpif(global.isProd, streamify(uglify())))
+    .pipe($.if(isProd, $.streamify($.uglify())))
     .pipe(gulp.dest(files.scripts.build));
 });
 
 gulp.task('styles', function() {
   return gulp.src(files.styles.main)
     .pipe(sass({
-      sourceComments: global.isProd ? 'none' : 'map',
+      sourceComments: isProd ? 'none' : 'map',
       sourceMap: 'sass',
-      outputStyle: global.isProd ? 'compressed' : 'nested'
+      outputStyle: isProd ? 'compressed' : 'nested'
     }))
-    .pipe(gulpif(global.isProd, minifycss()))
+    .pipe($.if(isProd, $.minifyCss()))
     .pipe(gulp.dest(files.styles.build));
 });
 
-gulp.task('views', function() {
-  gulp.src('src/index.html')
-      .pipe(minifyHTML({
-        comments: global.isProd ? false : true,
-        spare: global.isProd ? false : true,
-        empty: true
-      }))
+gulp.task('html', function() {
+  return gulp.src('src/index.html')
       .pipe(gulp.dest(files.html.build));
-
-  return gulp.src('./src/views/**/*.html')
-    .pipe(templateCache({
-      standalone: true
-    }))
-    .pipe(gulp.dest('./src/scripts'));
-});
-
-gulp.task('test', function(done) {
-  return karma.server.start({
-    configFile: cwd + '/karma.conf.js'
-  }, done);
-});
-
-gulp.task('protractor', ['webdriver-update', 'webdriver' ], function() {
-  return gulp.src('test/e2e/**/*.js')
-    .pipe(protractor({
-        configFile: './test/protractor.conf.js',
-    }))
-    .on('error', function(err) {
-      // Make sure failed tests cause gulp to exit non-zero
-      throw err;
-    });
 });
 
 gulp.task('watch', function() {
-  gulp.watch(files.html.source, ['views']);
+  gulp.watch(files.html.source, ['html']);
   gulp.watch(files.scripts.source, ['scripts']);
   return gulp.watch(files.styles.source, ['styles']);
 });
 
-gulp.task('server', function(next) {
-  var server = superstatic({
+gulp.task('server', function() {
+  superstatic({
     logger: {
       info: function(msg) {
         console.log('Info:', msg);
@@ -140,22 +91,34 @@ gulp.task('server', function(next) {
     },
     port: 3000,
     config: 'divshot.json'
+  })
+  .listen(function() {
+    console.log('Server running on port ' + 3000);
   });
-  server.listen(function() {
-    console.log('Server running on port ' + server.port);
-  });
-  return next();
 });
 
-gulp.task('prod', function() {
-  global.isProd = true;
-  return runSequence('views', 'styles', 'scripts');
+gulp.task('vendor', function() {
+  var stream = gulp.src([
+    'bower_components/accounting/accounting.js',
+    'bower_components/money/money.js',
+    'bower_components/lodash/lodash.js',
+    'bower_components/angular/angular.js',
+    'bower_components/angular-route/angular-route.js',
+    'bower_components/jquery/dist/jquery.js',
+    'bower_components/bootstrap/dist/css/bootstrap.css',
+    'bower_components/bootstrap/dist/js/bootstrap.js'
+  ]);
+
+  stream
+      .pipe(gulp.dest('build/vendor'));
+
+  return stream;
 });
 
 gulp.task('build', function() {
-  return runSequence('views', 'styles', 'scripts');
+  return runSequence('html', 'styles', 'scripts');
 });
 
 gulp.task('default', function() {
-  return runSequence('build', 'watch', 'server');
+  return runSequence(['build'], 'watch', 'server');
 });
